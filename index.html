@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
+  <script src="./node_modules/lodash/lodash.min.js"></script>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+  <script src="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- <link rel="stylesheet" href="./node_modules/gridstack/dist/gridstack.min.css"> -->
+  <!-- <script src="./node_modules/gridstack/dist/gridstack.all.js"></script> -->
+  <link rel="stylesheet" href="style.css">
+  <script src="./node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/sortablejs/Sortable.js"></script>
+<script src="node_modules/vuedraggable/dist/vuedraggable.js"></script>
+<script src="node_modules/echarts/dist/echarts.min.js"></script>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+<body>
+    <div class="container-fluid wrap" id="pageWrap">
+      <div class="row align-items-center" id="page">
+        <div class="container">
+          <div class="row" id="parent">
+            <div class="col-sm column" id="col-1">
+                第一栏
+              <div class="d-flex flex-column align-items-stretch sortable">
+                  <!-- <div>content 1-1</div> -->
+                <div class="row content" id="1-1" style="height: 200px;"></div>
+                <div class="row content" id="1-2" style="height: 200px;" >
+                </div>
+                <div class="row content" id='1-3' style="height: 200px;">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm column" id='col-2'>
+              第二栏
+              <div class="d-flex flex-column align-items-stretch sortable">
+                  <div class="row content" id="2-1" style="height: 200px;">
+                  </div>
+                  <div class="row content" id="2-2" style="height: 200px;">
+                  </div>
+                  <div class="row content" id="2-3" style="height: 200px;">
+                  </div>
+              </div>
+            </div>
+            <div class="col-sm column" id='col-3'>
+              第三栏
+              <div class="d-flex flex-column align-items-stretch sortable">
+                <div>
+                  <div class="row content" id="3-1" style="height: 200px;">
+                    <div style="display: inline;">content 3-1</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="row content" id="3-2" style="height: 200px;">
+                    <div>content 3-2</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="row content" id="3-3" style="height: 200px;">
+                    <div>content 3-3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+<!-- <script src="node_modules/sortablejs/Sortable.js"></script> -->
+<script src="./lib/js/options.js"></script>
+<script>
+
+  function createChart(id) {
+    let dom = document.getElementById(id)
+    dom.chart = echarts.init(dom)
+    return dom.chart
+  }
+  function initChartArr(row, col) {
+    let arr = []
+    for (let i =0; i < row; i++) {
+      for(let j =0; j < col; j++) {
+        let id = `${(i+1)}-${j+1}`
+        arr.push(createChart(id))
+      }
+    }
+    return arr
+  }
+  
+    $( function() {
+      let chartArr = initChartArr(3, 3)
+      chartArr.forEach((chart, i) => {
+        chart.setOption(options[i])
+      })
+      // console.log(domArr)
+      //echart
+      
+    // $( "#resizable" ).resizable({
+    //   containment: "#container"
+    // });
+    $('.content').resizable({
+      stop: function(e, ui) {
+        ui.element[0].chart.resize()
+      },
+      maxWidth: 300
+    })
+  } );
+  
+  let arr = document.getElementsByClassName('sortable')
+  for (let el of arr) {
+    Sortable.create(el, {
+      group: 'world'
+    })
+  }
+
+
+  // let rows = document.getElementsByClassName('content')
+  // for(let el of rows) {
+  //   sortable = Sortable.create(el, {
+  //     group: 'world',
+  //     onEnd: function(e) {
+  //       console.log(e)
+  //       e.from.append(e.to.children[0])
+  //     }
+  //   })
+  // }
+
+//   let test = document.getElementById('test')
+
+//  Sortable.create(test, {
+//    filter: '.content',
+//    group: 'hello'
+//  })
+
+  // let content = document.getElementsByClassName('row')
+  // for(let el of content) {
+  //   Sortable.create(el)
+  // }
+
+  
+  let parent = document.getElementById('parent')
+  let parent_sortable = Sortable.create(parent, {
+    filter: '.d-flex'
+  })
+  
+  // Sortable.create()
+</script>
+</html>

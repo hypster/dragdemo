@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./node_modules/lodash/lodash.min.js"></script>
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <link rel="stylesheet" href="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+  <script src="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/gridstack/dist/gridstack.min.css">
+  <script src="./node_modules/gridstack/dist/gridstack.all.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="./node_modules/vue/dist/vue.js"></script>
+<script src="node_modules/sortablejs/Sortable.js"></script>
+<script src="node_modules/vuedraggable/dist/vuedraggable.js"></script>
+</head>
+<body>
+  
+    <div class="container-fluid wrap" id="pageWrap">
+  
+      <div class="row align-items-center" id="page">
+        <div class="container">
+          {{list}}
+
+          <div class="row" id="parent">
+            <div class="col-sm column" id="col-1">
+                One of three columns
+                <draggable :list='list[0]' class="d-flex flex-column align-items-stretch sortable">
+                  <div v-for="(el, key) in list[0]" :key='key' class="row content" :style="`height: ${el.height};`" >
+                    {{el.name}}
+                  </div>
+                </draggable>
+              <!-- <div class="d-flex flex-column align-items-stretch sortable">
+                <div class="row content" style="height: 200px;" >
+                  <div>{{elFrom(0,0)}}</div>
+                </div>
+                <div class="row content" style="height: 100px;" >
+                  <div>{{elFrom(0,1)}}</div>
+                </div>
+                <div class="row content" style="height: 100px;">
+                  <div>{{elFrom(0,2)}}</div>
+                </div>
+              </div> -->
+            </div>
+            <div class="col-sm column" id='col-2'>
+              two of three columns
+              <draggable :list='list[1]' class="d-flex flex-column align-items-stretch sortable">
+                  <div v-for="(el, key) in list[1]" :key='key' class="row content" :style="`height: ${el.height};`" >
+                    {{el.name}}
+                  </div>
+              </draggable>
+              <!-- <div class="d-flex flex-column align-items-stretch sortable">
+                  <div class="row content" style="height: 200px;">
+                    <div>{{elFrom(1,0)}}</div>
+                  </div>
+                  <div class="row content" style="height: 100px;">
+                    <div>{{elFrom(1,1)}}</div>
+                  </div>
+                  <div class="row content" style="height: 100px;">
+                    <div>{{elFrom(1, 2)}}</div>
+                  </div>
+              </div> -->
+            </div>
+            <div class="col-sm column" id='col-3'>
+              three of three columns
+              <draggable :list='list[2]' class="d-flex flex-column align-items-stretch sortable">
+                  <div v-for="(el, key) in list[2]" :key='key' class="row content" :style="`height: ${el.height};`" >
+                    {{el.name}}
+                  </div>
+                </draggable>
+              <!-- <div class="d-flex flex-column align-items-stretch sortable">
+                <div>
+                  <div class="row content" style="height: 200px;">
+                    <div style="display: inline;">{{elFrom(2, 0)}}</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="row content" style="height: 100px;">
+                    <div>{{elFrom(2, 1)}}</div>
+                  </div>
+                </div>
+                <div>
+                  <div class="row content" style="height: 100px;">
+                    <div>{{elFrom(2, 2)}}</div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </body>
+<script>
+new Vue({
+  el: '#pageWrap',
+  data: {
+    list: [
+      [
+        {name: 'content 1-1', height: '200px'},
+        {name: 'content 1-2', height: '100px'},
+        {name: 'content 1-3', height: '100px'}
+      ],
+      [
+        {name: 'content 2-1', height: '100px'},
+        {name: 'content 2-2', height: '200px'},
+        {name: 'content 2-3', height: '100px'}
+      ],
+      [
+        {name: 'content 3-1', height: '100px'},
+        {name: 'content 3-2', height: '100px'},
+        {name: 'content 3-3', height: '200px'}
+      ]
+      ],
+    popup: [
+      [
+        'content 1-1',
+        'content 1-2',
+        'content-1-3'
+      ],
+      [
+        'content 2-1',
+        'content 2-2',
+        'content 2-3',
+      ],
+      [
+        'content 3-1',
+        'content 3-2',
+        'content 3-3',
+      ],
+      
+    ]
+  },
+  computed: {
+  },
+  methods: {
+    elFrom(i, j) {
+      // console.log(this._data)
+      // console.log(index)
+      // console.log(this.popup[])
+      return this.popup[i][j]
+    }
+  },
+  created() {
+    console.log('created')
+  },
+  mounted() {
+    let parent = document.getElementById('parent')
+    let parent_sortable = Sortable.create(parent, {
+      filter: '.d-flex',
+      disabled: true
+    })
+
+  let rows = document.getElementsByClassName('sortable')
+  for(let el of rows) {
+    sortable = Sortable.create(el, {
+      group: 'world',
+      // onEnd: function(e) {
+      //   console.log(e)
+      //   e.from.append(e.to.children[0])
+      // }
+    })
+  }
+  }
+})
+</script>
+</html>
