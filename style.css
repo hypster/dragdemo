@@ -21,7 +21,7 @@ html, body {
 }
 #parent {
   height: 100%;
-  max-height: 600px;
+  /* max-height: 700px; */
 }
 
 #col-1 {
@@ -35,7 +35,7 @@ html, body {
   background-color: deepskyblue;
 }
 #col-1, #col-2, #col-3 {
-  height: 80%;
+  /* height: 80%; */
   padding: 0 20px 20px;
 }
 #col-1 .row {
@@ -47,9 +47,9 @@ html, body {
 #col-3 .row {
   background-color: powderblue;
 }
-.column > .d-flex {
+/* .column > .d-flex {
   height: 90%;
-}
+} */
 .col-6 {
   background-color: darksalmon;
 }

@@ -6,165 +6,277 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
   <script src="./node_modules/lodash/lodash.min.js"></script>
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <link rel="stylesheet" href="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
   <script src="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="./node_modules/gridstack/dist/gridstack.min.css">
-  <!-- <link rel="stylesheet" href="./node_modules/gridstack/dist/gridstack-extra.css"> -->
-  <script src="./node_modules/gridstack/dist/gridstack.all.js"></script>
-  <link rel="stylesheet" href="style.css">
+  <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
+  <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
+  <!-- <link rel="stylesheet" href="./node_modules/gridstack/dist/gridstack.min.css"> -->
+  <!-- <script src="./node_modules/gridstack/dist/gridstack.all.js"></script> -->
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="stylesheet" href="main.css">
   <script src="./node_modules/vue/dist/vue.js"></script>
   <script src="node_modules/sortablejs/Sortable.js"></script>
   <script src="node_modules/vuedraggable/dist/vuedraggable.js"></script>
+  <script src="node_modules/echarts/dist/echarts.min.js"></script>
+  <script src="node_modules/split.js/split.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+
+  <script src="./node_modules/vue-echarts/dist/vue-echarts.js"></script>
+
+  <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
 <body>
-
-
-  <script type="text/javascript" src="./lib/js/script.js"></script>
-  <div class="container-fluid wrap" id="pageWrap">
-    <div class="row align-items-center" id="page">
-      <div class="container">
-        {{list}}
-
-        <div class="row" id="parent">
-          <div class="col-sm-4 column" id="col-1">
-            One of three columns
-            <div class="d-flex flex-column align-items-stretch sortable">
-              <div class="grid-stack row content" style="height: 200px;">
-                <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3">{{elFrom(0,0)}}</div>
-              </div>
-              <div class="grid-stack row content" style="height: 100px;">
-                <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">{{elFrom(0,1)}}</div>
-              </div>
-              <div class="grid-stack row content" style="height: 100px;">
-                <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="1">{{elFrom(0,2)}}</div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-4 column" id='col-2'>
-            two of three columns
-
-            <div class="d-flex flex-column align-items-stretch sortable">
-                <div class="grid-stack row content" style="height: 200px;">
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3">{{elFrom(1,0)}}</div>
-                  </div>
-                  <div class="grid-stack row content" style="height: 100px;">
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">{{elFrom(1,1)}}</div>
-                  </div>
-                  <div class="grid-stack row content" style="height: 100px;">
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="1">{{elFrom(1,2)}}</div>
-                  </div>
-            </div>
-          </div>
-          <div class="col-sm-4 column" id='col-3'>
-            three of three columns
-
-            <div class="d-flex flex-column align-items-stretch sortable">
-                <div class="grid-stack row content" style="height: 200px;">
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="3">{{elFrom(1,0)}}</div>
-                  </div>
-                  <div class="grid-stack row content" style="height: 100px;">
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="2">{{elFrom(1,1)}}</div>
-                  </div>
-                  <div class="grid-stack row content" style="height: 100px;">
-                    <div class="grid-stack-item" data-gs-x="0" data-gs-y="0" data-gs-width="4" data-gs-height="1">{{elFrom(1,2)}}</div>
-                  </div>
-            </div>
-          </div>
-        </div>
+  <div class="parent" id="app">
+    <div id="one" class="split split-horizontal">
+      <div id="a" class="split split-vertical draggable">
+        <!-- <chart auto-resize :options='options[0]'></chart> -->
+      </div>
+      <div id="b" class="split split-vertical draggable">
+        <!-- <chart :options='options[1]'></chart> -->
+      </div>
+      <div id="c" class="split split-vertical draggable">
+        <!-- <chart :options='options[2]'></chart> -->
+      </div>
+    </div>
+    <div id="two" class="split split-horizontal">
+      <div id="d" class="split split-vertical draggable">
+        <!-- <chart :options='options[3]'></chart> -->
+      </div>
+      <div id="e" class="split split-vertical draggable">
+        <!-- <chart :options='options[4]'></chart> -->
+      </div>
+      <div id="f" class="split split-vertical draggable">
+        <!-- <chart :options='options[5]'></chart> -->
+      </div>
+    </div>
+    <div id="three" class="split split-horizontal">
+      <!-- <p>#three</p> -->
+      <div id="g" class="split split-vertical draggable">
+        <!-- <chart :options='options[6]'></chart> -->
+      </div>
+      <div id="h" class="split split-vertical draggable">
+        <!-- <chart :options='options[7]'></chart> -->
+      </div>
+      <div id="i" class="split split-vertical draggable">
+        <!-- <chart :options='options[8]'></chart> -->
       </div>
     </div>
   </div>
 
 </body>
+<!-- <script src="node_modules/sortablejs/Sortable.js"></script> -->
+<script src="./lib/js/options.js"></script>
 <script>
-  new Vue({
-    el: '#pageWrap',
-    data: {
-      list: [
-        [{
-            name: 'content 1-1',
-            height: '200px'
-          },
-          {
-            name: 'content 1-2',
-            height: '100px'
-          },
-          {
-            name: 'content 1-3',
-            height: '100px'
-          }
-        ],
-        [{
-            name: 'content 2-1',
-            height: '100px'
-          },
-          {
-            name: 'content 2-2',
-            height: '200px'
-          },
-          {
-            name: 'content 2-3',
-            height: '100px'
-          }
-        ],
-        [{
-            name: 'content 3-1',
-            height: '100px'
-          },
-          {
-            name: 'content 3-2',
-            height: '100px'
-          },
-          {
-            name: 'content 3-3',
-            height: '200px'
-          }
-        ]
-      ],
-      popup: [
-        [
-          'content 1-1',
-          'content 1-2',
-          'content-1-3'
-        ],
-        [
-          'content 2-1',
-          'content 2-2',
-          'content 2-3',
-        ],
-        [
-          'content 3-1',
-          'content 3-2',
-          'content 3-3',
-        ],
+  // let chart = Vue.component('chart', VueECharts)
+  // chart.options.autoResize = true
+  let chartArr = []
+  let charArr = genCharArray('a', 'z')
 
-      ]
+  //resize
+  Split(['#one', '#two', '#three'], {
+    sizes: [33.33, 33.33, 33.33],
+    minSize: 200,
+    onDragEnd
+  });
+
+  Split(['#a', '#b', '#c'], {
+    direction: 'vertical',
+    onDragEnd
+  })
+  Split(['#d', '#e', '#f'], {
+    direction: 'vertical',
+    onDragEnd
+  })
+  Split(['#g', '#h', '#i'], {
+    direction: 'vertical',
+    onDragEnd
+  })
+
+  function createChartWithOption(id, option) {
+    chart = createChart(id)
+    if (option)
+      chart.setOption(option)
+    return chart
+  }
+
+  //图标初始化
+  chartArr = initChartArr(9)
+  chartArr.forEach((chart, i) => {
+    chart.setOption(options[i])
+    $(chart._dom).data('id', i)
+  })
+  
+
+  //拖拽逻辑
+  $('.draggable').droppable({
+    classes: {
+      // "ui-droppable-active": "ui-state-active",
+      "ui-droppable-hover": "ui-state-hover"
     },
-    computed: {},
-    methods: {
-      elFrom(i, j) {
-        // console.log(this._data)
-        // console.log(index)
-        // console.log(this.popup[])
-        return this.popup[i][j]
-      }
-    },
-    created() {
-      console.log('created')
-    },
-    mounted() {
-    //   let parent = document.getElementById('parent')
-    //   let parent_sortable = Sortable.create(parent, {
-    //     filter: '.d-flex',
-    //     disabled: true
-    //   })
+    helper: true,
+    drop: function (event, ui) {
+      console.log('drop')
+      // console.log(event)
+      // console.log(ui)
+      let to = event.target
+      let from = ui.draggable[0]
+      from.innerHTML = ''
+      to.innerHTML = ''
+      // console.log($(from).data('id'))
+      // console.log($(to).data('id'))
+      let fromId = $(from).data('id')
+      let toId = $(to).data('id')
+      $(from).data('id', toId)
+      $(to).data('id', fromId)
+      // console.log(options[toId])
+      // console.log(options[fromId])
+      // console.log(from.id)
+      // console.log(to.id)
+      let a = createChartWithOption(from.id, options[toId])
+      let b = createChartWithOption(to.id, options[fromId])
+      chartArr.splice(toId, 1, b)
+      chartArr.splice(fromId, 1, a)
+      // console.log(a, b)
+      
+
+      // $(draggable).find('div')[0].appendChild(to)
+      // console.log()
+      // console.log(draggable.parentElement)
+      // return false
     }
   })
+
+  //draggable
+  chartArr.forEach((chart, i) => {
+    $(chart._dom).draggable({
+      helper: function () {
+        let oldCanvas = ($(chart._dom).find('canvas')[0])
+        let oldCtx = oldCanvas.getContext('2d')
+        let canvas = document.createElement('canvas')
+        $(canvas).css('width', ($(oldCanvas).css('width')))
+        $(canvas).css('height', ($(oldCanvas).css('height')))
+        canvas.width = oldCanvas.width
+        canvas.height = oldCanvas.height
+        let ctx = canvas.getContext('2d')
+        let data = oldCtx.getImageData(0, 0, oldCanvas.width, oldCanvas.height)
+        ctx.putImageData(data, 0, 0)
+        $(canvas).css('z-index', 1000)
+        return ctx.canvas
+      },
+      cursor: "move",
+      start() {
+        console.log('start')
+      }
+    })
+  })
+
+  window.onresize = function () {
+    chartArr.forEach(chart => {
+      chart.resize()
+    })
+  }
+
+
+
+  function createChart(id) {
+    let dom = document.getElementById(id)
+    if(dom.chart)
+      dom.chart.dispose()
+    dom.chart = echarts.init(dom)
+    return dom.chart
+  }
+
+  function genCharArray(charA, charZ) {
+    var a = [],
+      i = charA.charCodeAt(0),
+      j = charZ.charCodeAt(0);
+    for (; i <= j; ++i) {
+      a.push(String.fromCharCode(i));
+    }
+    return a;
+  }
+
+
+  function initChartArr(length) {
+    let arr = []
+    for (let i = 0; i < length; i++) {
+      arr.push(createChart(charArr[i]))
+    }
+    return arr
+  }
+
+  function onDragEnd() {
+    console.log('drag end')
+    chartArr.forEach(chart => {
+      chart.resize()
+    })
+  }
+
+
+  // new Vue({
+  //   el: '#app',
+  //   data: {
+  //     options: options
+  //   },
+  //   mounted() {
+
+  //   },
+  //   methods: {
+
+  //   }
+  // })
+  //swap
+
+
+
+
+
+  // let arr = document.getElementsByClassName('sortable')
+  // for (let el of arr) {
+  //   Sortable.create(el, {
+  //     group: 'world'
+  //   })
+  // }
+
+
+  // let rows = document.getElementsByClassName('content')
+  // for(let el of rows) {
+  //   sortable = Sortable.create(el, {
+  //     group: 'world',
+  //     onEnd: function(e) {
+  //       console.log(e)
+  //       e.from.append(e.to.children[0])
+  //     }
+  //   })
+  // }
+
+  //   let test = document.getElementById('test')
+
+  //  Sortable.create(test, {
+  //    filter: '.content',
+  //    group: 'hello'
+  //  })
+
+  // let content = document.getElementsByClassName('row')
+  // for(let el of content) {
+  //   Sortable.create(el)
+  // }
+
+
+  // let parent = document.getElementById('parent')
+  // let parent_sortable = Sortable.create(parent, {
+  //   filter: '.d-flex'
+  // })
+
+  // Sortable.create()
 </script>
 
 </html>
