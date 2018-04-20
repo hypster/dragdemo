@@ -101,7 +101,7 @@
   })
 
   function createChartWithOption(id, option) {
-    chart = createChart(id)
+    let chart = createChart(id)
     if (option)
       chart.setOption(option)
     return chart
@@ -127,6 +127,7 @@
       // console.log(event)
       // console.log(ui)
       let to = event.target
+      // console.log(to)
       let from = ui.draggable[0]
       from.innerHTML = ''
       to.innerHTML = ''
@@ -134,16 +135,23 @@
       // console.log($(to).data('id'))
       let fromId = $(from).data('id')
       let toId = $(to).data('id')
+      // console.log(fromId, toId)
       $(from).data('id', toId)
       $(to).data('id', fromId)
+      
       // console.log(options[toId])
       // console.log(options[fromId])
       // console.log(from.id)
       // console.log(to.id)
       let a = createChartWithOption(from.id, options[toId])
       let b = createChartWithOption(to.id, options[fromId])
-      chartArr.splice(toId, 1, b)
-      chartArr.splice(fromId, 1, a)
+      // console.log(a.resize, b.resize)
+      // let _id = from.id
+      // from.id = to.id
+      // to.id = _id
+      // debugger
+      // chartArr.splice(toId, 1, b)
+      // chartArr.splice(fromId, 1, a)
       // console.log(a, b)
       
 
@@ -177,20 +185,44 @@
       }
     })
   })
-
-  window.onresize = function () {
+  function resize() {
+    // debugger
+    let resizeUndefined = chartArr.some(c => {
+      return !c.resize
+    })
+    if(resizeUndefined) {
+      console.log('resize undefined')
+      return 
+    }
     chartArr.forEach(chart => {
-      chart.resize()
+      // debugger
+      if(chart === null) {
+        return
+      }
+      if(chart){
+        if(chart.resize) {
+          chart.resize()
+        }
+      }
     })
   }
+
+  window.onresize = resize
 
 
 
   function createChart(id) {
     let dom = document.getElementById(id)
-    if(dom.chart)
+    if(dom.chart) {
+      let index = chartArr.indexOf(dom.chart)
       dom.chart.dispose()
-    dom.chart = echarts.init(dom)
+      dom.chart = echarts.init(dom)
+      chartArr.splice(index, 1, dom.chart)
+      
+    } else {
+      dom.chart = echarts.init(dom)
+      
+    }
     return dom.chart
   }
 
@@ -215,9 +247,8 @@
 
   function onDragEnd() {
     console.log('drag end')
-    chartArr.forEach(chart => {
-      chart.resize()
-    })
+    // setTimeout(resize, 500)
+    resize()
   }
 
 
