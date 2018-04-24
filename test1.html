@@ -5,22 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script> -->
+  <title>数据视图</title>
   <script src="./node_modules/lodash/lodash.min.js"></script>
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <link rel="stylesheet" href="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
   <script src="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-  <!-- <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css"> -->
-  <!-- <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script> -->
-  <!-- <link rel="stylesheet" href="./node_modules/gridstack/dist/gridstack.min.css"> -->
-  <!-- <script src="./node_modules/gridstack/dist/gridstack.all.js"></script> -->
-  <!-- <link rel="stylesheet" href="style.css"> -->
   <link rel="stylesheet" href="main.css">
   <script src="./node_modules/vue/dist/vue.js"></script>
-  <script src="node_modules/sortablejs/Sortable.js"></script>
-  <script src="node_modules/vuedraggable/dist/vuedraggable.js"></script>
+
   <script src="node_modules/echarts/dist/echarts.min.js"></script>
   <script src="node_modules/split.js/split.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
@@ -28,55 +20,80 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
 
-  <script src="./node_modules/vue-echarts/dist/vue-echarts.js"></script>
 
   <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
 <body>
-  <div class="parent" id="app">
-    <div id="one" class="split split-horizontal">
-      <div id="a" class="split split-vertical draggable">
-        <!-- <chart auto-resize :options='options[0]'></chart> -->
+  <div class="wrap">
+    <aside class="sidebar">
+      
+        <div id="left-chart-nav">
+          <ul>
+            <li class="active">
+              <a class="left-chart-nav-link" id="left-chart-nav-line" href="#chart-type-line">
+                <div class="chart-icon"></div>
+                <div class="chart-name">Line</div>
+              </a>
+            </li>
+            <li class="">
+              <a class="left-chart-nav-link" id="left-chart-nav-bar" href="#chart-type-bar">
+                <div class="chart-icon"></div>
+                <div class="chart-name">Bar</div>
+              </a>
+            </li>
+            <li class="">
+              <a class="left-chart-nav-link" id="left-chart-nav-pie" href="#chart-type-pie">
+                <div class="chart-icon"></div>
+                <div class="chart-name">Pie</div>
+              </a>
+            </li>
+          </ul>
+      
       </div>
-      <div id="b" class="split split-vertical draggable">
-        <!-- <chart :options='options[1]'></chart> -->
+    </aside>
+    <div class="parent main" id="app">
+      <div id="one" class="split split-horizontal">
+        <div id="a" class="split split-vertical draggable">
+          <!-- <chart auto-resize :options='options[0]'></chart> -->
+        </div>
+        <div id="b" class="split split-vertical draggable">
+          <!-- <chart :options='options[1]'></chart> -->
+        </div>
+        <div id="c" class="split split-vertical draggable">
+          <!-- <chart :options='options[2]'></chart> -->
+        </div>
       </div>
-      <div id="c" class="split split-vertical draggable">
-        <!-- <chart :options='options[2]'></chart> -->
+      <div id="two" class="split split-horizontal">
+        <div id="d" class="split split-vertical draggable">
+          <!-- <chart :options='options[3]'></chart> -->
+        </div>
+        <div id="e" class="split split-vertical draggable">
+          <!-- <chart :options='options[4]'></chart> -->
+        </div>
+        <div id="f" class="split split-vertical draggable">
+          <!-- <chart :options='options[5]'></chart> -->
+        </div>
       </div>
-    </div>
-    <div id="two" class="split split-horizontal">
-      <div id="d" class="split split-vertical draggable">
-        <!-- <chart :options='options[3]'></chart> -->
-      </div>
-      <div id="e" class="split split-vertical draggable">
-        <!-- <chart :options='options[4]'></chart> -->
-      </div>
-      <div id="f" class="split split-vertical draggable">
-        <!-- <chart :options='options[5]'></chart> -->
-      </div>
-    </div>
-    <div id="three" class="split split-horizontal">
-      <!-- <p>#three</p> -->
-      <div id="g" class="split split-vertical draggable">
-        <!-- <chart :options='options[6]'></chart> -->
-      </div>
-      <div id="h" class="split split-vertical draggable">
-        <!-- <chart :options='options[7]'></chart> -->
-      </div>
-      <div id="i" class="split split-vertical draggable">
-        <!-- <chart :options='options[8]'></chart> -->
+      <div id="three" class="split split-horizontal">
+        <!-- <p>#three</p> -->
+        <div id="g" class="split split-vertical draggable">
+          <!-- <chart :options='options[6]'></chart> -->
+        </div>
+        <div id="h" class="split split-vertical draggable">
+          <!-- <chart :options='options[7]'></chart> -->
+        </div>
+        <div id="i" class="split split-vertical draggable">
+          <!-- <chart :options='options[8]'></chart> -->
+        </div>
       </div>
     </div>
   </div>
 
 </body>
-<!-- <script src="node_modules/sortablejs/Sortable.js"></script> -->
+
 <script src="./lib/js/options.js"></script>
 <script>
-  // let chart = Vue.component('chart', VueECharts)
-  // chart.options.autoResize = true
   let chartArr = []
   let charArr = genCharArray('a', 'z')
 
@@ -100,20 +117,15 @@
     onDragEnd
   })
 
-  function createChartWithOption(id, option) {
-    let chart = createChart(id)
-    if (option)
-      chart.setOption(option)
-    return chart
-  }
+  
 
   //图标初始化
-  chartArr = initChartArr(9)
+  chartArr = initChartArr(8)
   chartArr.forEach((chart, i) => {
     chart.setOption(options[i])
-    $(chart._dom).data('id', i)
+    $(chart._dom).data('index', i)
   })
-  
+
 
   //拖拽逻辑
   $('.draggable').droppable({
@@ -124,49 +136,38 @@
     helper: true,
     drop: function (event, ui) {
       console.log('drop')
-      // console.log(event)
-      // console.log(ui)
       let to = event.target
-      // console.log(to)
       let from = ui.draggable[0]
       from.innerHTML = ''
       to.innerHTML = ''
-      // console.log($(from).data('id'))
-      // console.log($(to).data('id'))
-      let fromId = $(from).data('id')
-      let toId = $(to).data('id')
-      // console.log(fromId, toId)
-      $(from).data('id', toId)
-      $(to).data('id', fromId)
-      
-      // console.log(options[toId])
-      // console.log(options[fromId])
-      // console.log(from.id)
-      // console.log(to.id)
-      let a = createChartWithOption(from.id, options[toId])
-      let b = createChartWithOption(to.id, options[fromId])
-      // console.log(a.resize, b.resize)
-      // let _id = from.id
-      // from.id = to.id
-      // to.id = _id
+      let fromIndex = $(from).data('index')
+      let toIndex = $(to).data('index')
       // debugger
-      // chartArr.splice(toId, 1, b)
-      // chartArr.splice(fromId, 1, a)
-      // console.log(a, b)
-      
-
-      // $(draggable).find('div')[0].appendChild(to)
-      // console.log()
-      // console.log(draggable.parentElement)
-      // return false
+      $(from).data('index', '')
+      $(to).data('index', '')
+      if($(from).is('.ui-draggable'))
+        $(from).draggable('disable')
+      if($(to).is('.ui-draggable'))
+        $(to).draggable('disable')
+      if(toIndex) {
+        $(from).data('index', toIndex)
+        createChart(from.id, options[toIndex])
+      }
+      if(fromIndex) {
+        $(to).data('index', fromIndex)
+        createChart(to.id, options[fromIndex])
+      }
     }
   })
 
+  
   //draggable
-  chartArr.forEach((chart, i) => {
-    $(chart._dom).draggable({
+  function makeDrag(dom) {
+    // if(!dom.chart)
+    //   return
+    $(dom).draggable({
       helper: function () {
-        let oldCanvas = ($(chart._dom).find('canvas')[0])
+        let oldCanvas = $(dom).find('canvas')[0]
         let oldCtx = oldCanvas.getContext('2d')
         let canvas = document.createElement('canvas')
         $(canvas).css('width', ($(oldCanvas).css('width')))
@@ -184,23 +185,28 @@
         console.log('start')
       }
     })
-  })
+  }
+  //loop through chart array to make dom draggable
+  // chartArr.forEach((chart, i) => {
+  //   makeDrag(chart._dom)
+  // })
+
   function resize() {
     // debugger
     let resizeUndefined = chartArr.some(c => {
       return !c.resize
     })
-    if(resizeUndefined) {
+    if (resizeUndefined) {
       console.log('resize undefined')
-      return 
+      return
     }
     chartArr.forEach(chart => {
       // debugger
-      if(chart === null) {
+      if (chart === null) {
         return
       }
-      if(chart){
-        if(chart.resize) {
+      if (chart) {
+        if (chart.resize) {
           chart.resize()
         }
       }
@@ -211,17 +217,26 @@
 
 
 
-  function createChart(id) {
+  function createChart(id, option) {
     let dom = document.getElementById(id)
-    if(dom.chart) {
+    //如果dom元素之前未初始化拖拽，还要初始化
+    if(!$(dom).is('.ui-draggable')) {
+      makeDrag(dom)
+    }
+    else {
+      $(dom).draggable('enable')
+    }
+    if (dom.chart) {
       let index = chartArr.indexOf(dom.chart)
       dom.chart.dispose()
       dom.chart = echarts.init(dom)
       chartArr.splice(index, 1, dom.chart)
-      
+
     } else {
       dom.chart = echarts.init(dom)
-      
+    }
+    if(option) {
+      dom.chart.setOption(option)
     }
     return dom.chart
   }
@@ -264,50 +279,6 @@
 
   //   }
   // })
-  //swap
-
-
-
-
-
-  // let arr = document.getElementsByClassName('sortable')
-  // for (let el of arr) {
-  //   Sortable.create(el, {
-  //     group: 'world'
-  //   })
-  // }
-
-
-  // let rows = document.getElementsByClassName('content')
-  // for(let el of rows) {
-  //   sortable = Sortable.create(el, {
-  //     group: 'world',
-  //     onEnd: function(e) {
-  //       console.log(e)
-  //       e.from.append(e.to.children[0])
-  //     }
-  //   })
-  // }
-
-  //   let test = document.getElementById('test')
-
-  //  Sortable.create(test, {
-  //    filter: '.content',
-  //    group: 'hello'
-  //  })
-
-  // let content = document.getElementsByClassName('row')
-  // for(let el of content) {
-  //   Sortable.create(el)
-  // }
-
-
-  // let parent = document.getElementById('parent')
-  // let parent_sortable = Sortable.create(parent, {
-  //   filter: '.d-flex'
-  // })
-
-  // Sortable.create()
 </script>
 
 </html>

@@ -2,6 +2,15 @@ html, body {
   height: 100%;
   /* background-color: greenyellow; */
 }
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+ul li{
+  list-style: none;
+}
 .container  {
   /* max-width: 1000px;
   padding: 10px;
@@ -111,4 +120,80 @@ hr {
 
 .ui-state-hover {
   background-color: aqua;
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  position: relative
+}
+.sidebar {
+  flex: 0 0 180px;
+  background-color: #293c55;
+}
+
+.main {
+  flex: 1 1 0;
+}
+
+#left-chart-nav {
+  padding-top: 51px;
+  position: fixed;
+  width: 180px;
+  /* overflow-y: hidden; */
+}
+
+#left-chart-nav li {
+  margin-bottom: 0;
+  height: 54px;
+  width: 100%;
+  padding: 10px 0 10px 20px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+#left-chart-nav li:hover {
+  background-color: forestgreen;
+}
+
+#left-chart-nav li a {
+  color: #ccc;
+  position: relative;
+  display: block;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+a {
+  background-color: transparent;
+}
+
+#left-chart-nav li a .chart-icon {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background-image: url(./images/chart-icon.png);
+  background-size: 32px;
+  background-repeat: no-repeat;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  border: 1px solid #999;
+}
+#left-chart-nav-line .chart-icon {
+  background-position-x: -1px;
+  background-position-y: -1px;
+}
+#left-chart-nav-bar .chart-icon {
+  background-position-x: -1px;
+  background-position-y: -33px;
+}
+#left-chart-nav li a .chart-name {
+  display: inline-block;
+  position: relative;
+  top: -12px;
+  margin-left: 10px;
+}
+
+#left-chart-nav-pie .chart-icon {
+  background-position-x: -1px;
+  background-position-y: -129px;
 }
