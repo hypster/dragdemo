@@ -10,7 +10,6 @@
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
   <link rel="stylesheet" href="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.css">
   <script src="./lib/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="">
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="node_modules/vuetify/dist/vuetify.min.css">
   <link rel="stylesheet" href="node_modules/prismjs/themes/prism-coy.css">
@@ -26,9 +25,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
   
-  <!-- <script src="node_modules/echarts/dist/echarts.min.js"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
-  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script> -->
   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
   <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
@@ -88,7 +84,7 @@
           </div> -->
         </div>
         <div id="two" class="split split-horizontal">
-          <div id="d" class="split split-vertical draggable">
+          <div id="d"  class="split split-vertical">
             <!-- <chart auto-resize v-show='positionMap[3]' :options='positionMap[3]'></chart> -->
           </div>
           <!-- <div id="e" class="split split-vertical draggable">
@@ -101,10 +97,10 @@
         <div id="three" class="split split-horizontal">
           <!-- <p>#three</p> -->
           <div id="g" class="split split-vertical draggable">
-            <chart auto-resize v-show='positionMap[6]' :options='positionMap[6]'></chart>
+            <chart :data-position='6' auto-resize v-show='positionMap[6]' :options='positionMap[6]'></chart>
           </div>
           <div id="h" class="split split-vertical draggable">
-            <chart auto-resize v-show='positionMap[7]' :options='positionMap[7]'></chart>
+            <chart :data-position='7' auto-resize v-show='positionMap[7]' :options='positionMap[7]'></chart>
           </div>
           <!-- <div id="i" class="split split-vertical draggable">
             <chart auto-resize v-show='positionMap[8]' :options='positionMap[8]'></chart>
