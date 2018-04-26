@@ -15,7 +15,9 @@
   <link rel="stylesheet" href="node_modules/vuetify/dist/vuetify.min.css">
   <link rel="stylesheet" href="node_modules/prismjs/themes/prism-coy.css">
   <script src="./node_modules/vue/dist/vue.js"></script>
-  <script src="node_modules/echarts/dist/echarts.min.js"></script>
+  
+  <script src="node_modules/vue-echarts/dist/vue-echarts.js"></script>
+  
   <script src="node_modules/split.js/split.min.js"></script>
   <script src="node_modules/vuetify/dist/vuetify.min.js"></script>
   <script src="node_modules/prismjs/prism.js"></script>
@@ -23,14 +25,27 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/github.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
+  
+  <!-- <script src="node_modules/echarts/dist/echarts.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script> -->
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+  <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
 
 
   <!-- <link rel="stylesheet" href="style.css"> -->
 </head>
 
 <body>
-  <div class="wrap">
-    <aside class="sidebar">
+  <div id="app" class="wrap">
+    <!-- <aside class="sidebar">
         <div id="left-chart-nav">
           <ul>
             <li data-type='type' class="active">
@@ -54,49 +69,55 @@
           </ul>
       
       </div>
-    </aside>
-    <div class="parent main">
-      <div id="one" class="split split-horizontal">
-        <div id="a" class="split split-vertical draggable">
-          <!-- <chart auto-resize :options='options[0]'></chart> -->
+    </aside> -->
+    <div class="main">
+      <!-- {{options}} -->
+      <header class="header"><h1>标题</h1></header>
+      <div class="parent">
+        <div id="one" class="split split-horizontal">
+          <div id="a" class="split split-vertical draggable">
+            <!-- <draggable :option='positionMap[0]'> -->
+              <chart ref='1-1' :data-position='0'  @click="onclick"  ref="test" auto-resize v-show='positionMap[0]' :options='positionMap[0]'></chart>
+            <!-- </draggable> -->
+          </div>
+          <div id="b" class="split split-vertical draggable">
+            <chart ref='1-2' :data-position='1'  auto-resize v-show='positionMap[1]' :options='positionMap[1]'></chart>
+          </div>
+          <!-- <div id="c" class="split split-vertical draggable">
+            <chart auto-resize v-show='positionMap[2]' :options='positionMap[2]'></chart>
+          </div> -->
         </div>
-        <div id="b" class="split split-vertical draggable">
-          <!-- <chart :options='options[1]'></chart> -->
+        <div id="two" class="split split-horizontal">
+          <div id="d" class="split split-vertical draggable">
+            <!-- <chart auto-resize v-show='positionMap[3]' :options='positionMap[3]'></chart> -->
+          </div>
+          <!-- <div id="e" class="split split-vertical draggable">
+            <chart auto-resize v-show='positionMap[4]' :options='positionMap[4]'></chart>
+          </div> -->
+          <!-- <div id="f" class="split split-vertical draggable">
+            <chart auto-resize v-show='positionMap[5]' :options='positionMap[5]'></chart>
+          </div> -->
         </div>
-        <div id="c" class="split split-vertical draggable">
-          <!-- <chart :options='options[2]'></chart> -->
-        </div>
-      </div>
-      <div id="two" class="split split-horizontal">
-        <div id="d" class="split split-vertical draggable">
-          <!-- <chart :options='options[3]'></chart> -->
-        </div>
-        <div id="e" class="split split-vertical draggable">
-          <!-- <chart :options='options[4]'></chart> -->
-        </div>
-        <div id="f" class="split split-vertical draggable">
-          <!-- <chart :options='options[5]'></chart> -->
-        </div>
-      </div>
-      <div id="three" class="split split-horizontal">
-        <!-- <p>#three</p> -->
-        <div id="g" class="split split-vertical draggable">
-          <!-- <chart :options='options[6]'></chart> -->
-        </div>
-        <div id="h" class="split split-vertical draggable">
-          <!-- <chart :options='options[7]'></chart> -->
-        </div>
-        <div id="i" class="split split-vertical draggable">
-          <!-- <chart :options='options[8]'></chart> -->
+        <div id="three" class="split split-horizontal">
+          <!-- <p>#three</p> -->
+          <div id="g" class="split split-vertical draggable">
+            <chart auto-resize v-show='positionMap[6]' :options='positionMap[6]'></chart>
+          </div>
+          <div id="h" class="split split-vertical draggable">
+            <chart auto-resize v-show='positionMap[7]' :options='positionMap[7]'></chart>
+          </div>
+          <!-- <div id="i" class="split split-vertical draggable">
+            <chart auto-resize v-show='positionMap[8]' :options='positionMap[8]'></chart>
+          </div> -->
         </div>
       </div>
     </div>
   </div>
-  
-    <div id="app">
-      {{options.length}}
+  <!--
+    <div>
+      <div draggable="true">fefefef</div>
       <v-bottom-sheet v-model='dialog'>
-          <!-- <v-btn slot="activator" color="red" dark>Show player</v-btn> -->
+          <v-btn slot="activator" color="red" dark>Show player</v-btn>
           <v-card>
             {{gridId}}
               <v-card-title>
@@ -137,10 +158,17 @@
       </v-bottom-sheet>
     
     </div>
+  -->
 </body>
 <script type="text/x-template" id='code'>
   <pre><code class="language-json">{{code}}</code></pre>
 </script>
+<script type="text/x-template" id="draggable">
+  <div draggable='true' class='chart-wrap'>
+  <slot></slot>
+  </div>
+</script>
+<script src="./lib/js/chineseMap.js"></script>
 <script src="./lib/js/options.js"></script>
 <script src="./lib/js/util.js"></script>
 <script src="./lib/js/main.js"></script>
